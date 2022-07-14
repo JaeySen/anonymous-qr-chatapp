@@ -12,25 +12,21 @@ function SignIn() {
 
     function handleSubmit(event) {
         event.preventDefault();
+        console.log("cid receive:", cid);
+        // SignInAnoy({chatID: cid})
     }
 
     function handleChange(event) {
-        console.log("before:", cid)
         setChatID({value: event.target.value});
-        console.log("after:", cid)
     }
 
     return (
         <div style={{ display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center' }}>
-            <Button style={{ padding: '30px', fontSize: '20px', borderRadius: '0', fontWeight: '600' }} onClick={SignInAnoy}>Sign In With Google</Button>
+            <Button style={{ padding: '30px', fontSize: '20px', borderRadius: '0', fontWeight: '600' }} onClick={SignInAnoy}>Create chat box</Button>
 
-            {/* TODO onSubmit open chatbox with chatid from input */}
-            <form onSubmit={handleSubmit}>
-                <div>
-                <Input style={{ width: '60%', fontSize: '15px', fontWeight: '550', marginLeft: '5px' }} placeholder='chatbox id here...' type="text" value={cid} onChange={handleChange}/>
-                <Button style={{ width: '18%', fontSize: '15px', fontWeight: '550', margin: '4px 5% -13px 5%', maxWidth: '200px'}} type="submit">Go</Button>
-                </div>
-            </form>
+            <Input style={{ width: '60%', fontSize: '15px', fontWeight: '550', marginLeft: '5px' }} placeholder='chatbox id here...' type="text" value={cid} onChange={handleChange}/>
+            <Button style={{ width: '18%', fontSize: '15px', fontWeight: '550', margin: '4px 5% -13px 5%', maxWidth: '200px'}} onClick={(e) => {e.preventDefault(); SignInAnoy({chatID: cid})}}>Go</Button>
+
         </div>
     )
 }
