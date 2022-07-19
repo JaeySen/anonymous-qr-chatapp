@@ -1,16 +1,31 @@
-import React from 'react'
-import firebase from 'firebase'
-import { auth } from '../firebase.js'
-import { Button } from '@material-ui/core'
+import React, {useState, useRef} from 'react'
+import { Button, Input } from '@material-ui/core'
+import SignInAnoy from './SignInAnonymously'
+import useStore from '../store'
 
 function SignIn() {
-    function signInWithGoogle() {
-        const provider = new firebase.auth.GoogleAuthProvider()
-        auth.signInWithPopup(provider)
+    const [cid, setchatID] = useState('');
+    const inputRef = useRef("")
+
+    const { setChatID } = useStore()
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        inputRef.current = cid
+        setChatID(cid)
+        SignInAnoy()
+    }   
+
+    function handleChange(event) {
+        setchatID({value: event.target.value});      
     }
+
     return (
         <div style={{ display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center' }}>
-            <Button style={{ padding: '30px', fontSize: '20px', borderRadius: '0', fontWeight: '600' }} onClick={signInWithGoogle}>Sign In With Google</Button>
+            <Button style={{ padding: '30px', fontSize: '20px', borderRadius: '0', fontWeight: '600' }} onClick={SignInAnoy}>Create chat box</Button>
+            <Input style={{ width: '60%', fontSize: '15px', fontWeight: '550', marginLeft: '5px' }} placeholder='chatbox id here...' type="text" ref={inputRef} value={cid} onChange={handleChange}/>
+            <Button style={{ width: '18%', fontSize: '15px', fontWeight: '550', margin: '4px 5% -13px 5%', maxWidth: '200px'}} onClick={handleSubmit}>Go</Button>
+
         </div>
     )
 }
