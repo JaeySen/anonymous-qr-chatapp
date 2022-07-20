@@ -1,18 +1,17 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import QRCode from "react-qr-code";
-import useStore from '../../store';
 
 const CustomQR = props => {
-    const chatID = useStore(state => state.chatID)
-    
-    useEffect(() => {
-        console.log(chatID.value.toString());
-    }, [props])
-    
+
+    // useEffect(() => {
+    //     console.log("qr props.cid:", props.cid)
+
+    // }, [props.cid])
 
     return(
-        <QRCode value={chatID.value.toString()}/>
+        <QRCode value={props.cid}/>
     )
+
 }
 
 export default CustomQR;

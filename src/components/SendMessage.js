@@ -7,19 +7,22 @@ import useStore from '../store'
 
 function SendMessage({ scroll }) {
     const [msg, setMsg] = useState('')
-    const cid = useStore(state => state.chatID)
-
+    // const cid = useStore(state => state.chatID)
+    // const msgid = useStore(state => state.messageID)
+    // const increMessageID = useStore(state => state.increMessageID)
+    const { chatID, setChatID, messageID, increMessageID} = useStore()
     async function sendMessage(e) {
         e.preventDefault()
-        const { uid, photoURL } = auth.currentUser
+        const { uid } = auth.currentUser
 
-        await db.collection(cid ? cid.value : auth.currentUser.uid).add({
+        await db.collection(chatID ? chatID : auth.currentUser.uid).add({
             text: msg,
-            photoURL,
+            messageID,
             uid,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         })
         setMsg('')
+        increMessageID()
         scroll.current.scrollIntoView({ behavior: 'smooth' })
     }
     return (

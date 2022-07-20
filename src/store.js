@@ -5,6 +5,8 @@ import create from 'zustand'
 const useStore = create(set => ({
     chatID: "",
     setChatID: (chatID) => set({ chatID: chatID }),
+    messageID: 0,
+    increMessageID: (messageID) => set({ messageID: messageID + 1})
 }))
 
 export default useStore

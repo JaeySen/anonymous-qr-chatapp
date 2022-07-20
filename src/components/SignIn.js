@@ -1,31 +1,27 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import { Button, Input, Grid } from '@material-ui/core'
 import SignInAnoy from './SignInAnonymously'
 import useStore from '../store'
 import CustomQR from './QR/QR.js'
 function SignIn() {
     const [cid, setchatID] = useState('');
-    const inputRef = useRef("")
-
+    const inputRef = useRef()
     const { chatID, setChatID } = useStore()
 
     function handleSubmit(event) {
         event.preventDefault();
-        inputRef.current = cid
+        // console.log("Sign in chat box:", cid)
+        // console.log("store chatID", chatID)
         setChatID(cid)
         SignInAnoy()
-    }   
-
-    function handleChange(event) {
-        setchatID({value: event.target.value});
-        setChatID({value: event.target.value});
-        console.log(cid);
-        console.log(chatID);
     }
 
-    // useEffect(() => {
-    //     console.log("reder", cid.toString());
-    // }, [cid])
+    function handleChange(event) {
+        console.log("cid input", event.target.value)
+        setchatID(event.target.value)
+       
+    }
+
     
     
     return (
@@ -44,9 +40,9 @@ function SignIn() {
             style={{ minHeight: '100vh' }}
         >
             <Button onClick={SignInAnoy}>Create chat box</Button>
-            <Input placeholder='chatbox id here...' type="text" ref={inputRef} value={cid} onChange={handleChange}/>
+            <Input placeholder='chatbox id here...' type="text" ref={inputRef} value={cid.value} onChange={handleChange}/>
             <Button onClick={handleSubmit}>Go</Button>
-            <CustomQR cid={cid.toString()} />
+            <CustomQR cid={cid.toString()}/>
         </Grid>
     )
 }
