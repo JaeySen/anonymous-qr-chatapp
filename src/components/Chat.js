@@ -11,7 +11,7 @@ function Chat() {
   const cid = useStore(state => state.chatID)
 
   useEffect(() => {
-    db.collection(cid ? cid.value : auth.currentUser.uid)
+    db.collection(cid ? cid : auth.currentUser.uid)
       .orderBy("createdAt")
       .limit(50)
       .onSnapshot((snapshot) => {
@@ -23,15 +23,14 @@ function Chat() {
     <div>
       <SignOut />
       <div className="msgs">
-        {messages.map(({ id, text, uid }) => (
+        {messages.map(({ messageID, text, uid }) => (
           <div>
             <div
-              key={id}
+              key={messageID}
               className={`msg ${
                 uid === auth.currentUser.uid ? "sent" : "received"
               }`}
             >
-              {/* <img src={photoURL} alt="" /> */}
               <p>{text}</p>
             </div>
           </div>

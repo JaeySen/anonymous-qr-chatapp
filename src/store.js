@@ -1,6 +1,4 @@
 import create from 'zustand'
-// import { auth } from './firebase.js'
-// import { useAuthState } from 'react-firebase-hooks/auth'
 
 const useStore = create(set => ({
     chatID: "",
