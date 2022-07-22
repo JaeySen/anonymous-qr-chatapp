@@ -1,17 +1,15 @@
-import { useEffect } from "react";
+import { Box } from "@material-ui/core";
 import QRCode from "react-qr-code";
+import styles from "./QR.style"
 
 const CustomQR = props => {
 
-    // useEffect(() => {
-    //     console.log("qr props.cid:", props.cid)
-
-    // }, [props.cid])
-
     return(
-        <QRCode value={props.cid}/>
+        <Box sx={styles.qrBox}>
+            <QRCode value={props.cid}/>
+        </Box>
+        
     )
-
 }
 
 export default CustomQR;

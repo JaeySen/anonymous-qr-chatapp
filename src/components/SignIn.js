@@ -1,36 +1,31 @@
-import React, {useState, useRef, useEffect} from 'react'
-import { Button, Input, Grid } from '@material-ui/core'
+import React, { useState } from 'react'
+import { Grid } from '@material-ui/core'
 import SignInAnoy from './SignInAnonymously'
 import useStore from '../store'
+
 import CustomQR from './QR/QR.js'
+import Button from "./Button/Button"
+import Input from "./Input/Input"
+import ButtonStyles from "./Button/button.style"
+import InputStyles from "./Input/input.style"
+
+
 function SignIn() {
     const [cid, setchatID] = useState('');
-    const inputRef = useRef()
     const { chatID, setChatID } = useStore()
 
     function handleSubmit(event) {
         event.preventDefault();
-        // console.log("Sign in chat box:", cid)
-        // console.log("store chatID", chatID)
         setChatID(cid)
         SignInAnoy()
     }
 
     function handleChange(event) {
         console.log("cid input", event.target.value)
-        setchatID(event.target.value)
-       
+        setchatID(event.target.value)     
     }
 
-    
-    
     return (
-        // <div style={{ display: 'flex', justifyContent: 'center', height: '100vh', alignItems: 'center' }}>
-        //     <Button style={{ padding: '30px', fontSize: '20px', borderRadius: '0', fontWeight: '600' }} onClick={SignInAnoy}>Create chat box</Button>
-        //     <Input style={{ width: '60%', fontSize: '15px', fontWeight: '550', marginLeft: '5px' }} placeholder='chatbox id here...' type="text" ref={inputRef} value={cid} onChange={handleChange}/>
-        //     <Button style={{ width: '18%', fontSize: '15px', fontWeight: '550', margin: '4px 5% -13px 5%', maxWidth: '200px'}} onClick={handleSubmit}>Go</Button>
-        //     <CustomQR cid={cid} />
-        // </div>
         <Grid
             container
             spacing={0}
@@ -39,9 +34,9 @@ function SignIn() {
             justifyContent="center"
             style={{ minHeight: '100vh' }}
         >
-            <Button onClick={SignInAnoy}>Create chat box</Button>
-            <Input placeholder='chatbox id here...' type="text" ref={inputRef} value={cid.value} onChange={handleChange}/>
-            <Button onClick={handleSubmit}>Go</Button>
+            <Button style={ButtonStyles.buttonCreate} onClick={SignInAnoy} value="Create chat box"/>
+            <Input style={InputStyles.input} placeholder='Chatbox id here...' type="text" value={cid.value} onChange={handleChange}/>
+            <Button style={ButtonStyles.buttonGo} onClick={handleSubmit} value="Go"/>
             <CustomQR cid={cid.toString()}/>
         </Grid>
     )
