@@ -23,10 +23,10 @@ function Chat() {
     <div>
       <SignOut />
       <div className="msgs">
-        {messages.map(({ messageID, text, uid }) => (
+        {messages.map(({ text, uid }) => (
           <div>
             <div
-              key={messageID}
+              // key={messageID}
               className={`msg ${
                 uid === auth.currentUser.uid ? "sent" : "received"
               }`}

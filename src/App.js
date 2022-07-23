@@ -39,6 +39,10 @@ function App() {
     console.log(chatID)
   }, [chatID])
 
+  useEffect(()=>{
+    console.log(cid)
+  }, [cid])
+
   
   
   return (

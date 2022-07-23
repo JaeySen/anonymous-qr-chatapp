@@ -1,21 +1,17 @@
 import React from 'react'
 import { Grid } from '@material-ui/core'
-import SignInAnoy from './SignInAnonymously'
 import useStore from '../store'
-
+import { useParams } from 'react-router-dom'
 import Button from "./Button/Button"
 import ButtonStyles from "./Button/button.style"
 
-
-import { useParams } from 'react-router-dom'
 function Join() {
     const cid = useParams()
-    const { chatID, setChatID, setStatus} = useStore()
+    const { setChatID, setStatus } = useStore()
 
     function joinChat(event) {
         event.preventDefault()
         console.log("cid input", cid)
-        SignInAnoy(setChatID)
         setChatID(cid)
         setStatus(true)
     }
