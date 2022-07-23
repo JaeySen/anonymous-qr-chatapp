@@ -10,19 +10,24 @@ import ButtonStyles from "./Button/button.style"
 import InputStyles from "./Input/input.style"
 
 
-function SignIn() {
-    const [cid, setchatID] = useState('');
-    const { chatID, setChatID } = useStore()
+function SignIn(props) {
+    // const [cid, setchatID] = useState('');
+    // const { chatID, setChatID } = useStore()
+    const { status, setStatus } = useStore()
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        setChatID(cid)
-        SignInAnoy()
-    }
+    // function handleSubmit(event) {
+    //     event.preventDefault();
+    //     setChatID(cid)
+    //     SignInAnoy()
+    // }
 
-    function handleChange(event) {
-        console.log("cid input", event.target.value)
-        setchatID(event.target.value)     
+    // function handleChange(event) {
+    //     console.log("cid input", event.target.value)
+    //     setchatID(event.target.value)     
+    // }
+
+    function handleCreate(event){
+        setStatus(true)
     }
 
     return (
@@ -34,10 +39,10 @@ function SignIn() {
             justifyContent="center"
             style={{ minHeight: '100vh' }}
         >
-            <Button style={ButtonStyles.buttonCreate} onClick={SignInAnoy} value="Create chat box"/>
-            <Input style={InputStyles.input} placeholder='Chatbox id here...' type="text" value={cid.value} onChange={handleChange}/>
-            <Button style={ButtonStyles.buttonGo} onClick={handleSubmit} value="Go"/>
-            <CustomQR cid={cid.toString()}/>
+            <Button style={ButtonStyles.buttonCreate} onClick={handleCreate} value="Create chat box"/>
+            {/* <Input style={InputStyles.input} placeholder='Chatbox id here...' type="text" value={cid.value} onChange={handleChange}/> */}
+            <CustomQR cid={"https://anonymous-qr-chatapp.herokuapp.com/" + props.cid.toString()}/>
+            {/* <Button style={ButtonStyles.buttonGo} onClick={handleSubmit} value="Go"/> */}
         </Grid>
     )
 }
