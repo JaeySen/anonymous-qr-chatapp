@@ -4,7 +4,7 @@ import SendMessage from "./SendMessage";
 import SignOut from "./SignOut";
 
 import useStore from '../store'
-import { v4 as uuidv4 } from 'uuid'
+
 function Chat() {
   const scroll = useRef();
   const [messages, setMessages] = useState([]);
@@ -23,8 +23,8 @@ function Chat() {
     <div>
       <SignOut />
       <div className="msgs">
-        {messages.map(({ text, uid }) => (
-          <div key={uuidv4()}>
+        {messages.map(({ text, messageid, uid }) => (
+          <div key={messageid}>
             <div
               className={`msg ${
                 uid === auth.currentUser.uid ? "sent" : "received"
