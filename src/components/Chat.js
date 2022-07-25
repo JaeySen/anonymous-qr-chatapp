@@ -17,7 +17,7 @@ function Chat() {
       .onSnapshot((snapshot) => {
         setMessages(snapshot.docs.map((doc) => doc.data()));
       });
-  }, []);
+  });
 
   return (
     <div>
@@ -26,7 +26,7 @@ function Chat() {
         {messages.map(({ text, uid }) => (
           <div>
             <div
-              // key={messageID}
+              key={text.id}
               className={`msg ${
                 uid === auth.currentUser.uid ? "sent" : "received"
               }`}

@@ -1,16 +1,13 @@
 import './App.css';
 import Chat from './components/Chat';
 import SignIn from './components/SignIn';
-import { auth } from './firebase.js'
-import { useAuthState } from 'react-firebase-hooks/auth'
-
+import Join from './components/Join'
 import SignInAnoy from './components/SignInAnonymously'
+
 import useStore from './store';
 import { useEffect } from 'react'
-import Join from './components/Join'
 
 import { 
-  useParams,
   BrowserRouter as Router,
   Routes as Switch,
   Route
@@ -19,7 +16,6 @@ import {
 function App() {
   const { chatID, setChatID } = useStore()
   const status = useStore(state => state.status)
-  const cid = useParams()
 
   useEffect(()=> {
     try{
@@ -31,15 +27,7 @@ function App() {
         console.log(errorCode, errorMessage);
     }
     
-  }, [])
-
-  // useEffect(() =>{
-  //   console.log("store chatID:", chatID)
-  // }, [chatID])
-
-  // useEffect(()=>{
-  //   console.log("param:", cid)
-  // }, [cid])
+  }, [setChatID])
 
   return (
     <>

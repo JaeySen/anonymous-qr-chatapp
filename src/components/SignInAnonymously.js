@@ -3,7 +3,7 @@ import { auth } from "../firebase";
 function SignInAnoy({ setChatID }){
     auth.signInAnonymously()
   .then(() => {
-    // console.log("Sign in as anoy:", auth.currentUser.uid)
+    console.log("Sign in as anoy:", auth.currentUser.uid)
     setChatID(auth.currentUser.uid)
   })
   .catch((error) => {

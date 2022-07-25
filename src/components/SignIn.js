@@ -1,17 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Grid } from '@material-ui/core'
-import SignInAnoy from './SignInAnonymously'
-import useStore from '../store'
-
 import CustomQR from './QR/QR.js'
 import Button from "./Button/Button"
-import Input from "./Input/Input"
 import ButtonStyles from "./Button/button.style"
-import InputStyles from "./Input/input.style"
 
+import useStore from '../store'
 
 function SignIn(props) {
-    const { status, setStatus } = useStore()
+    const { setStatus } = useStore()
 
     function handleCreate(event){
         setStatus(true)
