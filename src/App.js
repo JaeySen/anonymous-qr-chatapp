@@ -20,8 +20,6 @@ function App() {
   const { chatID, setChatID } = useStore()
   const status = useStore(state => state.status)
   const cid = useParams()
-  // const [user] = useAuthState(auth)
-  
 
   useEffect(()=> {
     try{
@@ -35,30 +33,22 @@ function App() {
     
   }, [])
 
-  useEffect(() =>{
-    console.log(chatID)
-  }, [chatID])
+  // useEffect(() =>{
+  //   console.log("store chatID:", chatID)
+  // }, [chatID])
 
-  useEffect(()=>{
-    console.log(cid)
-  }, [cid])
+  // useEffect(()=>{
+  //   console.log("param:", cid)
+  // }, [cid])
 
-  
-  
   return (
     <>
-    <Router>
-      <Switch>
-        <Route exact path="/" element={ status ? (<Chat />) : (<SignIn cid={chatID}/>)}/>
-        {/* <Route path="/:cid" component={status ? (<Chat/>):(<SignIn cid={cid}/>)}/> */}
-        <Route exact path="/:cid" element={ status ? (<Chat />) : (<Join />)}/>
-      </Switch>
-    </Router>
-      {/* { status ? (
-        <Chat />
-      ) : (
-        <SignIn cid={chatID}/>
-      )} */}
+      <Router>
+        <Switch>
+          <Route exact path="/" element={ status ? (<Chat />) : (<SignIn cid={chatID}/>)}/>
+          <Route exact path="/:cid" element={ status ? (<Chat />) : (<Join />)}/>
+        </Switch>
+      </Router>
     </>
   );
 }

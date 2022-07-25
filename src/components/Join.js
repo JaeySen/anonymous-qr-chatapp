@@ -11,11 +11,9 @@ function Join() {
 
     function joinChat(event) {
         event.preventDefault()
-        console.log("cid input", cid)
-        setChatID(cid)
+        setChatID(cid.cid)
         setStatus(true)
     }
-
 
     return (
         <Grid
