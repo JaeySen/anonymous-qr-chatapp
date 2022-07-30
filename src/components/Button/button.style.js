@@ -20,6 +20,13 @@ const styles = {
         fontWeight: '550', 
         margin: '4px 5% -13px 5%', 
         maxWidth: '200px'
+    },
+
+    signOut: {
+        padding: '20px', 
+        fontSize: '15px',
+        borderRadius: '0', 
+        fontWeight: '600'
     }
 }
 
