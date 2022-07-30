@@ -8,6 +8,7 @@ import Button from "./Button/Button"
 import Input from "./Input/Input"
 import ButtonStyles from "./Button/button.style"
 import InputStyles from "./Input/input.style"
+import { v4 as uuidv4 } from 'uuid'
 
 function SendMessage({ scroll }) {
     const [msg, setMsg] = useState('')
@@ -19,6 +20,7 @@ function SendMessage({ scroll }) {
 
         await db.collection(chatID ? chatID : auth.currentUser.uid).add({
             text: msg,
+            messageid: uuidv4(),
             uid,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         })
