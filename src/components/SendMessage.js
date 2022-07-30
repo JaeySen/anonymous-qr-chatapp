@@ -8,7 +8,6 @@ import Button from "./Button/Button"
 import Input from "./Input/Input"
 import ButtonStyles from "./Button/button.style"
 import InputStyles from "./Input/input.style"
-import { v4 as uuidv4 } from 'uuid'
 import { generateHash } from 'random-hash'
 
 function SendMessage({ scroll }) {

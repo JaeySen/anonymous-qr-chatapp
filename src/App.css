@@ -60,6 +60,17 @@ p {
   flex-direction: column;
 }
 
+.chatNav {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  background-color: #FAFAFA;
+  top: 0;
+  border-bottom: solid 1px lightgray;
+  z-index: 10;
+}
+
 
 @media (max-width: 775px) {
   p {
